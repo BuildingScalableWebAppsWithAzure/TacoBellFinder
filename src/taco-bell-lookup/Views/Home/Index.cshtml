@@ -1,0 +1,201 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@using TacoBellFinder.Web.Models
+@model List<Restaurant>
+
+<div class="row">
+    <div class="col-xs-12">
+        <h1>Search for a Taco Bell</h1>
+        <p>
+            To find a Taco Bell, enter criteria in the fields below and click the appropriate search button.
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Search by City, State, and Restaurant ID</div>
+            <div class="panel-body">
+                @using (Html.BeginForm("SearchByCityStateRestaurantId", "Home", FormMethod.Get))
+                {
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-3">
+                            <div class="form-group">
+                                <label for="cityState">City and State</label>
+
+                                <select name="cityState" class="form-control">
+                                    <option value="tn_chattanooga">Chattanooga, TN</option>
+                                    <option value="tn_knoxville">Knoxville, TN</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-3">
+                            <div class="form-group">
+                                <label for="restaurantId">Restaurant ID</label>
+
+                                <input type="text" name="restaurantId" class="form-control" />
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <input type="submit" value="Search" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Search by City, State, and Zip</div>
+            <div class="panel-body">
+                @using (Html.BeginForm("SearchByCityStateZip", "Home", FormMethod.Get))
+                {
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-3">
+                            <div class="form-group">
+                                <label for="cityState">City and State</label>
+
+                                <select name="cityState" class="form-control">
+                                    <option value="tn_chattanooga">Chattanooga, TN</option>
+                                    <option value="tn_knoxville">Knoxville, TN</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-3">
+                            <div class="form-group">
+                                <label for="restaurantId">Zip</label>
+
+                                <input type="text" name="zipCode" class="form-control" />
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <input type="submit" value="Search" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Search by State and Health Rating</div>
+            <div class="panel-body">
+                @using (Html.BeginForm("SearchByStateAndHealthRating", "Home", FormMethod.Get))
+                {
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-3">
+                            <div class="form-group">
+                                <label for="cityState">State</label>
+
+                                <select name="state" class="form-control">
+                                    <option value="tn">Tennessee</option>
+                                    <option value="al">Alabama</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-3">
+                            <div class="form-group">
+                                <label for="restaurantId">Health Rating</label>
+                                <input type="text" name="healthRating" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <input type="submit" value="Search" class="btn btn-primary" />
+                                </div>
+                            </div>
+                        </div>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Search for Gorditas</div>
+            <div class="panel-body">
+                @using (Html.BeginForm("SearchForGorditas", "Home", FormMethod.Get))
+                {
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <input type="submit" value="Search" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (Model != null)
+{
+    <div class="row">
+        <div class="col-sm-12">
+            @if (Model.Count > 0)
+            {
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Restaurant ID</th>
+                                <th>Address</th>
+                                <th>City</th>
+                                <th>State</th>
+                                <th>Zip</th>
+                                <th>Health Rating</th>
+                                <th>Gorditas?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Restaurant r in Model)
+                            {
+                                <tr>
+                                    <td><a href="/restaurant/@r.PartitionKey/@r.RestaurantId">@r.RestaurantId</a></td>
+                                    <td>@r.Address</td>
+                                    <td>@r.City</td>
+                                    <td>@r.State</td>
+                                    <td>@r.Zipcode</td>
+                                    <td>@r.HealthRating</td>
+                                    <td>@(r.HasGorditas ? "Yes" : "No")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div>No results were found</div>
+
+            }
+        </div>
+    </div>
+}

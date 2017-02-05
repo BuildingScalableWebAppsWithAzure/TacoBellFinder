@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{92A073A5-4779-4208-882D-E2B27497DBD6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{207E1314-040E-45B2-BD7B-D7E2EC53819F}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "TacoBellFinder.Web", "src\taco-bell-lookup\TacoBellFinder.Web.xproj", "{EAA14EBB-9973-420E-80FE-2C53CB837636}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EAA14EBB-9973-420E-80FE-2C53CB837636}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAA14EBB-9973-420E-80FE-2C53CB837636}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAA14EBB-9973-420E-80FE-2C53CB837636}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAA14EBB-9973-420E-80FE-2C53CB837636}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EAA14EBB-9973-420E-80FE-2C53CB837636} = {92A073A5-4779-4208-882D-E2B27497DBD6}
+	EndGlobalSection
+EndGlobal

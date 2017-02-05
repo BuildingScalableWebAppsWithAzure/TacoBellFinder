@@ -1,0 +1,37 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //hide our working indicator and results message when the page loads. 
+            $('#loadingIndicator').hide();
+            $('#resultMessage').hide();
+
+            //our handler for when the populate button is clicked. 
+            $('#populateButton').on('click', function () {
+                $('#populateButton').prop('disabled', true);
+                $('#loadingIndicator').show(); 
+                $.post('/api/restaurantdata/initialize', function () {
+                    $('#resultMessage').text('The data was successfully loaded');
+                }).fail(function () {
+                    $('#resultMessage').text('An error occurred when loading the reference data. The data was not loaded.');
+                }).always(function () {
+                    //always re-enable our populate button, hide our working indicator, and show the result message. 
+                    $('#loadingIndicator').hide();
+                    $('#populateButton').prop('disabled', false);
+                    $('#resultMessage').show(); 
+                });
+            });
+        });
+    </script>
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h1>Populate Data</h1>
+        <p>To load test data, click the Populate button.</p>
+        <button type="button" class="btn btn-primary" id="populateButton">Populate</button> <img src="~/images/loadingIndicator.gif" id="loadingIndicator" />
+        <div id="resultMessage">The data was successfully loaded</div>
+    </div>
+</div>
